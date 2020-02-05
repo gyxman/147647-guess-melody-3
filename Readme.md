@@ -1,7 +1,7 @@
 # Учебный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Роман Алексютин](https://up.htmlacademy.ru/react/3/user/147647).
-* Наставник: `Неизвестно`.
+* Наставник: [Вадим Двухжилов](https://htmlacademy.ru/profile/vdvukhzhilov).
 
 ---
 
