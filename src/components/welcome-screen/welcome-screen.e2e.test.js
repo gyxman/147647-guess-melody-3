@@ -7,7 +7,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Если полььзователь кликакет по кнопке начать игру, начинается загрузка игры`, () => {
+it(`Если пользователь кликакет по кнопке начать игру, начинается загрузка игры`, () => {
   const onWelcomeButtonClick = jest.fn();
 
   const welcomeScreen = shallow(
