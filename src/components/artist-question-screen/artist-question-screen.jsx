@@ -1,4 +1,4 @@
-import React, {PureComponent}  from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 export class ArtistQuestionScreen extends PureComponent {
@@ -7,7 +7,8 @@ export class ArtistQuestionScreen extends PureComponent {
   }
 
   render() {
-    const {question: {song, answers}} = this.props;
+    const {onAnswer, question} = this.props;
+    const {song, answers} = question;
 
     return (
       <section className="game game--artist">
@@ -19,7 +20,7 @@ export class ArtistQuestionScreen extends PureComponent {
 
           <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
             <circle className="timer__line" cx="390" cy="390" r="370"
-                    style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} />
+              style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}} />
           </svg>
 
           <div className="game__mistakes">
@@ -44,7 +45,10 @@ export class ArtistQuestionScreen extends PureComponent {
             {answers.map((answer, i) => (
               <div key={`${i}-${answer.artist}`} className="artist">
                 <input className="artist__input visually-hidden" type="radio" name="answer" value={`artist-${i}`}
-                       id={`answer-${i}`} />
+                  id={`answer-${i}`} onChange={(event) => {
+                    event.preventDefault();
+                    onAnswer(question, answer);
+                  }} />
                 <label className="artist__name" htmlFor={`answer-${i}`}>
                   <img className="artist__picture" src={`${answer.picture}`} alt={`${answer.artist}`} />
                   {answer.artist}
@@ -54,11 +58,12 @@ export class ArtistQuestionScreen extends PureComponent {
           </form>
         </section>
       </section>
-    )
+    );
   }
-};
+}
 
 ArtistQuestionScreen.propTypes = {
+  onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({
       picture: PropTypes.string.isRequired,

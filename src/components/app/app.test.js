@@ -6,6 +6,7 @@ it(`Если приложение загрузилось, то компонен�
   const tree = renderer
     .create(<App
       errorsCount={3}
+      questions={[]}
     />)
     .toJSON();
 
