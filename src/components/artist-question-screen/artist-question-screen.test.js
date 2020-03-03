@@ -7,7 +7,12 @@ it(`Если приложение загрузилось, то компонен�
     .create(<ArtistQuestionScreen
       question={{song: {src: ``}, answers: []}}
       onAnswer={() => {}}
-    />)
+      renderPlayer={() => {}}
+    />, {
+      createNodeMock: () => {
+        return {};
+      }
+    })
     .toJSON();
 
   expect(tree).toMatchSnapshot();

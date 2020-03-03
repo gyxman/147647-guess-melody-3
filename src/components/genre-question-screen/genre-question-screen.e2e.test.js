@@ -38,6 +38,7 @@ it(`Если пользователь отправляет форму, то пе
       <GenreQuestionScreen
         question={question}
         onAnswer={onAnswer}
+        renderPlayer={() => {}}
       />
   );
 

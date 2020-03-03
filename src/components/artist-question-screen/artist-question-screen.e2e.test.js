@@ -41,6 +41,7 @@ it(`Если пользователь кликает по варианту от�
       <ArtistQuestionScreen
         question={question}
         onAnswer={onAnswer}
+        renderPlayer={() => {}}
       />
   );
 
