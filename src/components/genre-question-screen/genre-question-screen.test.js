@@ -5,7 +5,7 @@ import {GenreQuestionScreen} from "./genre-question-screen.jsx";
 it(`Если приложение загрузилось, то компонент GenreQuestionScreen отрисовался`, () => {
   const tree = renderer
     .create(<GenreQuestionScreen
-      question={{answers: []}}
+      question={{answers: [], genre: ``}}
       onAnswer={() => {}}
       renderPlayer={() => {}}
     />, {
