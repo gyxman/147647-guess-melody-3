@@ -5,7 +5,7 @@ import {ArtistQuestionScreen} from "./artist-question-screen.jsx";
 it(`Если приложение загрузилось, то компонент ArtistQuestionScreen отрисовался`, () => {
   const tree = renderer
     .create(<ArtistQuestionScreen
-      question={{song: {src: ``}, answers: []}}
+      question={{song: {src: ``, artist: ``}, answers: []}}
       onAnswer={() => {}}
       renderPlayer={() => {}}
     />, {

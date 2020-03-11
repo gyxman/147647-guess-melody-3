@@ -11,6 +11,7 @@ describe(`Если приложение загрузилось, то компо�
     const tree = renderer.create(
         <GameScreen
           type={GameType.ARTIST}
+          mistakes={3}
         >
           {children}
         </GameScreen>
@@ -23,6 +24,7 @@ describe(`Если приложение загрузилось, то компо�
     const tree = renderer.create(
         <GameScreen
           type={GameType.GENRE}
+          mistakes={3}
         >
           {children}
         </GameScreen>
