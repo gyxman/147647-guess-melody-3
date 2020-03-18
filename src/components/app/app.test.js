@@ -30,16 +30,16 @@ const questions = [
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
     },
     answers: [{
-      picture: `picture1`,
+      picture: `https://api.adorable.io/avatars/128/1`,
       artist: `John Snow`,
     }, {
-      picture: `picture2`,
+      picture: `https://api.adorable.io/avatars/128/2`,
       artist: `Jack Daniels`,
     }, {
-      picture: `picture3`,
+      picture: `https://api.adorable.io/avatars/128/3`,
       artist: `Jim Beam`,
     }],
-  }
+  },
 ];
 
 describe(`Render App`, () => {
@@ -53,14 +53,17 @@ describe(`Render App`, () => {
           <Provider store={store}>
             <App
               maxMistakes={3}
+              mistakes={0}
               questions={questions}
               onUserAnswer={() => {}}
               onWelcomeButtonClick={() => {}}
+              resetGame={() => {}}
               step={-1}
             />
           </Provider>
       )
       .toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 
@@ -70,19 +73,22 @@ describe(`Render App`, () => {
     });
 
     const tree = renderer
-      .create(<Provider store={store}>
-        <App
-          maxMistakes={3}
-          questions={questions}
-          onUserAnswer={() => {}}
-          onWelcomeButtonClick={() => {}}
-          step={0}
-        />
-      </Provider>, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
+      .create(
+          <Provider store={store}>
+            <App
+              maxMistakes={3}
+              mistakes={0}
+              questions={questions}
+              onUserAnswer={() => {}}
+              onWelcomeButtonClick={() => {}}
+              resetGame={() => {}}
+              step={0}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -94,19 +100,76 @@ describe(`Render App`, () => {
     });
 
     const tree = renderer
-      .create(<Provider store={store}>
-        <App
-          maxMistakes={3}
-          questions={questions}
-          onUserAnswer={() => {}}
-          onWelcomeButtonClick={() => {}}
-          step={1}
-        />
-      </Provider>, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
+      .create(
+          <Provider store={store}>
+            <App
+              maxMistakes={3}
+              mistakes={0}
+              questions={questions}
+              onUserAnswer={() => {}}
+              onWelcomeButtonClick={() => {}}
+              resetGame={() => {}}
+              step={1}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render GameOverScreen`, () => {
+    const store = mockStore({
+      mistakes: 3,
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              maxMistakes={3}
+              mistakes={3}
+              questions={questions}
+              onUserAnswer={() => {}}
+              onWelcomeButtonClick={() => {}}
+              resetGame={() => {}}
+              step={1}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render WinScreen`, () => {
+    const store = mockStore({
+      mistakes: 3,
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              maxMistakes={3}
+              mistakes={0}
+              questions={questions}
+              onUserAnswer={() => {}}
+              onWelcomeButtonClick={() => {}}
+              resetGame={() => {}}
+              step={3}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
       .toJSON();
 
     expect(tree).toMatchSnapshot();
