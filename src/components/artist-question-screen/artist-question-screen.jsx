@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const ArtistQuestionScreen = (props) => {
+const ArtistQuestionScreen = (props) => {
   const {onAnswer, question, renderPlayer} = props;
   const {song, answers} = question;
 
@@ -47,3 +47,5 @@ ArtistQuestionScreen.propTypes = {
   }).isRequired,
   renderPlayer: PropTypes.func.isRequired,
 };
+
+export default ArtistQuestionScreen;
