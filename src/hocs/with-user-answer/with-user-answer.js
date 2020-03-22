@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {GameType} from "../../enums/game-type.enum";
+import {GameType} from "../../const";
 
 
 const withUserAnswer = (Component) => {
