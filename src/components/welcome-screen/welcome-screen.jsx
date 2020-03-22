@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const WelcomeScreen = ({errorsCount, onWelcomeButtonClick}) => {
+const WelcomeScreen = ({errorsCount, onWelcomeButtonClick}) => {
   return <section className="welcome">
     <div className="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
     </div>
@@ -20,3 +20,5 @@ WelcomeScreen.propTypes = {
   errorsCount: PropTypes.number.isRequired,
   onWelcomeButtonClick: PropTypes.func.isRequired,
 };
+
+export default WelcomeScreen;

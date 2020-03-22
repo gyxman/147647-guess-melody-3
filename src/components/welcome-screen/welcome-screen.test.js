@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {WelcomeScreen} from "./welcome-screen.jsx";
+import WelcomeScreen from "./welcome-screen.jsx";
 
 it(`Если приложение загрузилось, то компонент WelcomeScreen отрисовался`, () => {
   const tree = renderer
