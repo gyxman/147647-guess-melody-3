@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import Mistakes from "../mistakes/mistakes.jsx";
-import {GameType} from "../../enums/game-type.enum";
+import {GameType} from "../../const";
 
 
 const GameScreen = (props) => {
