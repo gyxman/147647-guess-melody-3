@@ -2,24 +2,31 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import Mistakes from "../mistakes/mistakes.jsx";
-import {GameType} from "../../const";
+import {AppRoute, GameType} from "../../const";
 import {getMistakes} from "../../reducer/game/selectors.js";
+import {Link} from "react-router-dom";
+import {ActionCreator} from "../../reducer/game/game";
 
 
 const GameScreen = (props) => {
   const {
     type,
     children,
+    goToWelcome,
     mistakes
   } = props;
 
   return (
     <section className={`game game--${type}`}>
       <header className="game__header">
-        <a className="game__back" href="#">
+        <Link
+          className="game__back"
+          to={AppRoute.ROOT}
+          onClick={goToWelcome}
+        >
           <span className="visually-hidden">Сыграть ещё раз</span>
           <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
-        </a>
+        </Link>
 
         <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
           <circle className="timer__line" cx="390" cy="390" r="370"
@@ -43,6 +50,7 @@ GameScreen.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
+  goToWelcome: PropTypes.func.isRequired,
   mistakes: PropTypes.number.isRequired,
 };
 
@@ -50,5 +58,11 @@ const mapStateToProps = (state) => ({
   mistakes: getMistakes(state),
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  goToWelcome() {
+    dispatch(ActionCreator.goToWelcome());
+  },
+});
+
 export {GameScreen};
-export default connect(mapStateToProps)(GameScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);
